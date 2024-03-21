@@ -33,3 +33,22 @@ tr:hover {
 h2{ 
     text-align: center;
 }
+
+/* Add this CSS to your existing stylesheet */
+
+.mostVisible {
+    font-size: 10px; /* Adjust font size to your preference */
+    font-weight: lighter; /* Make text bold */
+    margin: 20px auto; /* Center the paragraph horizontally and add margin for spacing */
+    text-align: center; /* Center the text within the paragraph */
+    color: white; /* Text color */
+    background-color: #444; /* Background color */
+    padding: 10px 20px; /* Padding for the box */
+    border-radius: 5px; /* Rounded corners for the box */
+    width: 500px;
+}
+
+.h2table {
+   
+}
+

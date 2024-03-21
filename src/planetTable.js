@@ -12,6 +12,7 @@ import neptuneImage from './images/neptune.png';
 import sunImage from './images/sun.png';
 import moonImage from './images/moon.png';
 import plutoImage from './images/pluto.png';
+import earthImage from './images/earth.png';
 
 const PlanetTable = ({ latitude, longitude }) => {
   const [tableData, setTableData] = useState([]);
@@ -47,6 +48,7 @@ const PlanetTable = ({ latitude, longitude }) => {
       Sun: sunImage,
       Moon: moonImage,
       Pluto: plutoImage,
+      Earth : earthImage
     };
   
     useEffect(() => {
@@ -74,9 +76,9 @@ const PlanetTable = ({ latitude, longitude }) => {
   
     return (
       <div>
-        <h2>Table</h2>
+        <h2 className='h2table'>Astronomy Table</h2>
         {mostVisiblePlanet && (
-          <p className='mostVisible'>Most Visible Planet: {mostVisiblePlanet}</p>
+          <p className='mostVisible'>The Most Visible Planet Today is: {mostVisiblePlanet}</p>
         )}
         <table>
           <thead>
