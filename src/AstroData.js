@@ -5,6 +5,7 @@ import MyComponent from './planetPos.js';
 import PlanetTable from './planetTable.js';
 import Weather from './Weather';
 import Weather2  from './astroTable.js';
+import './AstroData.css'
 
 const AstroData = () => {
   const [city, setCity] = useState('');

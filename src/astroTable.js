@@ -1,35 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Weather2.css'; // Import the CSS file
-import sunnyImage from './Assets/sunny.png'; // Image for Clear sky
-import cloudyImage from './Assets/cloudy.png'; // Image for Clouds
-import lightRainImage from './Assets/light_rain.png'; // Image for Light Rain
-import rainyImage from './Assets/rainy.png'; // Image for Rain
-import drizzleImage from './Assets/drizzle.png'; // Image for Drizzle
-import thunderstormImage from './Assets/thunderstorm.png'; // Image for Thunderstorm
-import mistImage from './Assets/mist.png'; // Image for Mist
-import showerRainImage from './Assets/shower_rain.png'; // Image for Shower Rain
-import defaultImage from './Assets/default.png'; // Default image (if weather condition is not matched)
-import sunriseImage from './Assets/sunrise.png'; // Image for Sunrise
-import sunsetImage from './Assets/sunset.png'; // Image for Sunset
-import moonriseImage from './Assets/moonrise.png'; // Image for Moonrise
-import moonsetImage from './Assets/moonset.png'; // Image for Moonset
-import PlanetTable from './planetTable'; // Import the PlanetTable component
+import './Weather2.css';
+import sunnyImage from './Assets/sunny.png';
+import cloudyImage from './Assets/cloudy.png';
+import lightRainImage from './Assets/light_rain.png';
+import rainyImage from './Assets/rainy.png';
+import drizzleImage from './Assets/drizzle.png';
+import thunderstormImage from './Assets/thunderstorm.png';
+import mistImage from './Assets/mist.png';
+import showerRainImage from './Assets/shower_rain.png';
+import defaultImage from './Assets/default.png';
+import sunriseImage from './Assets/sunrise.png';
+import sunsetImage from './Assets/sunset.png';
+import moonriseImage from './Assets/moonrise.png';
+import moonsetImage from './Assets/moonset.png';
+import PlanetTable from './planetTable';
 
 const Weather2 = ({ onCityChange }) => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-  const [moonData, setMoonData] = useState(null); // State to store moon data
+  const [moonData, setMoonData] = useState(null);
   const [sunrise, setSunrise] = useState('');
   const [sunset, setSunset] = useState('');
+  const [starGazingOptimal, setStarGazingOptimal] = useState('');
 
   useEffect(() => {
     if (latitude && longitude) {
       fetchAstronomyData();
     }
-  }, [latitude, longitude]); // Fetch astronomy data when latitude or longitude changes
+  }, [latitude, longitude]);
+
+  useEffect(() => {
+    if (moonData && sunrise) {
+      const moonriseTime = new Date(`2024-03-21 ${moonData.moonrise}`);
+      const sunriseTime = new Date(`2024-03-21 ${sunrise}`);
+      const timeDifference = (moonriseTime.getTime() - sunriseTime.getTime()) / (1000 * 60 * 60); // in hours
+
+      if (timeDifference < 9) {
+        setStarGazingOptimal('Not optimal');
+      } else if (timeDifference < 10) {
+        setStarGazingOptimal('Fair conditions');
+      } else {
+        setStarGazingOptimal('Optimal conditions');
+      }
+    }
+  }, [moonData, sunrise]);
 
   const fetchAstronomyData = async () => {
     try {
@@ -42,8 +59,6 @@ const Weather2 = ({ onCityChange }) => {
       });
 
       const { sunrise, sunset, moonrise, moonset } = response.data;
-
-      // Set sunrise, sunset, moonrise, and moonset
       setSunrise(sunrise);
       setSunset(sunset);
       setMoonData({ moonrise, moonset });
@@ -60,10 +75,8 @@ const Weather2 = ({ onCityChange }) => {
       );
       const weatherResponse = response.data;
       setWeatherData(weatherResponse);
-      console.log(weatherResponse); // You can see all the weather data in console log
       onCityChange(city);
 
-      // Fetch geo coordinates
       const geoResponse = await axios.get(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=0eb6fccdfb4dc326cd05c87f99c91444`
       );
@@ -71,7 +84,6 @@ const Weather2 = ({ onCityChange }) => {
       const latitude = geoData.lat;
       const longitude = geoData.lon;
 
-      // Set latitude and longitude
       setLatitude(latitude);
       setLongitude(longitude);
     } catch (error) {
@@ -110,6 +122,14 @@ const Weather2 = ({ onCityChange }) => {
     }
   };
 
+  const calculateStarGazingDuration = () => {
+    const moonriseTime = new Date(`2024-03-21 ${moonData.moonrise}`);
+    const sunriseTime = new Date(`2024-03-21 ${sunrise}`);
+    const timeDifference = (moonriseTime.getTime() - sunriseTime.getTime()) / (1000 * 60 * 60); // in hours
+    return timeDifference.toFixed(2) + ' hours';
+  };
+  
+
   return (
     <div className='weather-container'>
       <form className='weather-form' onSubmit={handleSubmit}>
@@ -136,7 +156,6 @@ const Weather2 = ({ onCityChange }) => {
         </div>
       )}
 
-      {/* Display moon data */}
       {moonData && (
         <div className='moon-data'>
           <p><img src={moonriseImage} alt="Moonrise" /> Moon Rise: {moonData.moonrise}</p>
@@ -146,9 +165,15 @@ const Weather2 = ({ onCityChange }) => {
         </div>
       )}
 
-      {/* Render PlanetTable component with latitude and longitude props */}
+{starGazingOptimal && (
+  <div className="star-gazing-info">
+    Star Gazing: {starGazingOptimal}
+    <div className="star-gazing-duration">Duration: {calculateStarGazingDuration()}</div>
+  </div>
+)}
+
+
       {latitude && longitude && <PlanetTable latitude={latitude} longitude={longitude} />}
-      
     </div>
   );
 };

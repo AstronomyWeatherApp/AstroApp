@@ -13,19 +13,28 @@ const App = () => {
     setCity(newCity);
   };
 
+  // Define a function to clear the city state
+  const clearCity = () => {
+    setCity('');
+  };
+
   return (
     <Router>
       <div>
         <Header />
         <Routes>
-          <Route path="/" element={<div>
-                                  <Weather onCityChange={handleCityChange} />
-                                  <WeatherForecast city={city} />
-                                </div>} />
-            <Route path="/AstroData" element={<AstroData />} />
+          <Route
+            path="/"
+            element={
+              <div>
+                {/* Pass clearCity function to clear city state */}
+                <Weather onCityChange={handleCityChange} clearCity={clearCity} />
+                <WeatherForecast city={city} />
+              </div>
+            }
+          />
+          <Route path="/AstroData" element={<AstroData />} />
         </Routes>
-
-
       </div>
     </Router>
   );
