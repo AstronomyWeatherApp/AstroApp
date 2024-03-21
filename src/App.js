@@ -1,10 +1,9 @@
-import Header from './Header'
-import WeatherForecast from './weatherForecast';
+
+import MyComponent from './weatherForecast';
 function App() {
   return(
     <>
-    <Header></Header>
-    <WeatherForecast></WeatherForecast>
+    <MyComponent></MyComponent>
     </>
   );
 
