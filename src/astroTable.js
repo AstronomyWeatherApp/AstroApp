@@ -10,6 +10,10 @@ import thunderstormImage from './Assets/thunderstorm.png'; // Image for Thunders
 import mistImage from './Assets/mist.png'; // Image for Mist
 import showerRainImage from './Assets/shower_rain.png'; // Image for Shower Rain
 import defaultImage from './Assets/default.png'; // Default image (if weather condition is not matched)
+import sunriseImage from './Assets/sunrise.png'; // Image for Sunrise
+import sunsetImage from './Assets/sunset.png'; // Image for Sunset
+import moonriseImage from './Assets/moonrise.png'; // Image for Moonrise
+import moonsetImage from './Assets/moonset.png'; // Image for Moonset
 import PlanetTable from './planetTable'; // Import the PlanetTable component
 
 const Weather2 = ({ onCityChange }) => {
@@ -135,10 +139,10 @@ const Weather2 = ({ onCityChange }) => {
       {/* Display moon data */}
       {moonData && (
         <div className='moon-data'>
-          <p>Moon Rise: {moonData.moonrise}</p>
-          <p>Moon Set: {moonData.moonset}</p>
-          <p>Sunrise: {sunrise}</p>
-          <p>Sunset: {sunset}</p>
+          <p><img src={moonriseImage} alt="Moonrise" /> Moon Rise: {moonData.moonrise}</p>
+          <p><img src={moonsetImage} alt="Moonset" /> Moon Set: {moonData.moonset}</p>
+          <p><img src={sunriseImage} alt="Sunrise" /> Sunrise: {sunrise}</p>
+          <p><img src={sunsetImage} alt="Sunset" /> Sunset: {sunset}</p>
         </div>
       )}
 

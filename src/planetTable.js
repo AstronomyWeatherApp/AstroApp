@@ -9,6 +9,9 @@ import jupiterImage from './images/jupiter.png';
 import saturnImage from './images/saturn.png';
 import uranusImage from './images/uranus.png';
 import neptuneImage from './images/neptune.png';
+import sunImage from './images/sun.png';
+import moonImage from './images/moon.png';
+import plutoImage from './images/pluto.png';
 
 const PlanetTable = ({ latitude, longitude }) => {
   const [tableData, setTableData] = useState([]);
@@ -41,6 +44,9 @@ const PlanetTable = ({ latitude, longitude }) => {
       Saturn: saturnImage,
       Uranus: uranusImage,
       Neptune: neptuneImage,
+      Sun: sunImage,
+      Moon: moonImage,
+      Pluto: plutoImage,
     };
   
     useEffect(() => {
@@ -75,7 +81,6 @@ const PlanetTable = ({ latitude, longitude }) => {
         <table>
           <thead>
             <tr>
-              
               <th>Object</th>
               <th>Distance (AU)</th>
               <th>Altitude (Degrees)</th>
@@ -86,7 +91,6 @@ const PlanetTable = ({ latitude, longitude }) => {
           <tbody>
             {tableData.map((rowData, index) => (
               <tr key={index}>
-                
                 <td>{rowData.cells[0].name}</td>
                 <td>{rowData.cells[0].distance.fromEarth.au}</td>
                 <td>{rowData.cells[0].position.horizontal.altitude.degrees}</td>
@@ -103,7 +107,6 @@ const PlanetTable = ({ latitude, longitude }) => {
         </table>
       </div>
     );
-  };
-  
-  export default PlanetTable;
-  
+};
+
+export default PlanetTable;
