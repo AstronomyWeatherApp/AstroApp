@@ -1,9 +1,10 @@
 
-import MyComponent from './weatherForecast';
+import MyComponent from './planetPositionWORKING.js';
+import PlanetTable from './planetPositionTABLE.js';
 function App() {
   return(
     <>
-    <MyComponent></MyComponent>
+    <PlanetTable></PlanetTable>
     </>
   );
 
