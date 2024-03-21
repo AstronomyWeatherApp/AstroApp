@@ -22,3 +22,22 @@
 .white-text {
     color: white;
 }
+
+@media screen and (min-width: 390px) {
+    .Week__Container {
+        padding: 50px;
+        font-size: 12px;
+    }
+
+    .Week__Day .div {
+        display: flex;
+        justify-content: center; /* Center the child horizontally */
+        align-items: center; /* Center the child vertically */
+        padding: 20px; /* Add space around the container */
+    }
+
+    .white-text {
+        margin: 5px;
+    }
+
+}

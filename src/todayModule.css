@@ -76,3 +76,28 @@
     z-index: 1;
    }
 
+@media only screen and (max-width: 390px) {
+    .Today__ImageContainer, .Today__Image {
+        width: 70px;
+        height: auto;
+    }
+
+    .Today__Container {
+        height: 70px;
+        width: auto;
+    }
+    .Today__Weatherinner .white-text {
+        font-size: 15px;
+        margin: 1px;    
+    }
+
+    .Today__Weatherinner {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center the content horizontally */
+        justify-content: center; /* Center the content vertically */
+        height: 100%;
+    }
+
+}
+
