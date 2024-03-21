@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Weather2.css'; // Import the CSS file
 import sunnyImage from './Assets/sunny.png'; // Image for Clear sky
@@ -17,6 +17,36 @@ const Weather2 = ({ onCityChange }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
+  const [moonData, setMoonData] = useState(null); // State to store moon data
+  const [sunrise, setSunrise] = useState('');
+  const [sunset, setSunset] = useState('');
+
+  useEffect(() => {
+    if (latitude && longitude) {
+      fetchAstronomyData();
+    }
+  }, [latitude, longitude]); // Fetch astronomy data when latitude or longitude changes
+
+  const fetchAstronomyData = async () => {
+    try {
+      const response = await axios.get('https://api.ipgeolocation.io/astronomy', {
+        params: {
+          apiKey: 'e4c7b9448c694ef89768b0acf5ac27db',
+          lat: latitude,
+          long: longitude
+        }
+      });
+
+      const { sunrise, sunset, moonrise, moonset } = response.data;
+
+      // Set sunrise, sunset, moonrise, and moonset
+      setSunrise(sunrise);
+      setSunset(sunset);
+      setMoonData({ moonrise, moonset });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -102,8 +132,19 @@ const Weather2 = ({ onCityChange }) => {
         </div>
       )}
 
+      {/* Display moon data */}
+      {moonData && (
+        <div className='moon-data'>
+          <p>Moon Rise: {moonData.moonrise}</p>
+          <p>Moon Set: {moonData.moonset}</p>
+          <p>Sunrise: {sunrise}</p>
+          <p>Sunset: {sunset}</p>
+        </div>
+      )}
+
       {/* Render PlanetTable component with latitude and longitude props */}
       {latitude && longitude && <PlanetTable latitude={latitude} longitude={longitude} />}
+      
     </div>
   );
 };

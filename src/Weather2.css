@@ -1,4 +1,5 @@
 /* Weather2.css */
+/* Weather2.css */
 
 .weather-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,11 +14,11 @@
     color: white;
     display: flex;
     flex-direction: column; /* Stack elements vertically */
-    height: 1600px;
     width: 800px;
     overflow: hidden;
-  }
-  
+    height: auto; /* Adjust height based on content */
+}
+
   .weather-form {
     margin-bottom: 20px;
     display: flex;
@@ -92,4 +93,25 @@
     color: #fff; /* Example color */
   }
   
+  /* Weather2.css */
+
+/* Moon data styling */
+.moon-data {
+    background-color: rgba(0, 0, 0, 0.25); /* Background color for moon data */
+    padding: 20px; 
+    border-radius: 10px; 
+    color: white;
+    margin-bottom: 20px; /* Add margin at the bottom */
+  }
+  
+  .moon-data p {
+    margin-bottom: 10px; /* Add margin between paragraphs */
+    font-size: 16px; /* Adjust font size */
+  }
+  
+  /* Center the moon data */
+  .moon-data p {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
   
