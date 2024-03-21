@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Weather.css'; // Import the CSS file
+import './Weather2.css'; // Import the CSS file
 import sunnyImage from './Assets/sunny.png'; // Image for Clear sky
 import cloudyImage from './Assets/cloudy.png'; // Image for Clouds
 import lightRainImage from './Assets/light_rain.png'; // Image for Light Rain
@@ -12,7 +12,7 @@ import showerRainImage from './Assets/shower_rain.png'; // Image for Shower Rain
 import defaultImage from './Assets/default.png'; // Default image (if weather condition is not matched)
 import PlanetTable from './planetTable'; // Import the PlanetTable component
 
-const Weather = ({ onCityChange }) => {
+const Weather2 = ({ onCityChange }) => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [latitude, setLatitude] = useState('');
@@ -102,9 +102,10 @@ const Weather = ({ onCityChange }) => {
         </div>
       )}
 
-      
+      {/* Render PlanetTable component with latitude and longitude props */}
+      {latitude && longitude && <PlanetTable latitude={latitude} longitude={longitude} />}
     </div>
   );
 };
 
-export default Weather;
+export default Weather2;

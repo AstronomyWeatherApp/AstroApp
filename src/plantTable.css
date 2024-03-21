@@ -1,0 +1,35 @@
+body,html {
+    color: white;
+}
+
+.container {
+    max-width: 800px; /* Adjust this value to your preference */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    text-align: center; /* Center the content horizontally */
+}
+
+table {
+    width: 70%; /* Make the table fill the container */
+    border-collapse: collapse;
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #444;
+}
+
+tr:hover {
+    background-color: #333;
+}
+
+h2{ 
+    text-align: center;
+}
