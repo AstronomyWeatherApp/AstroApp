@@ -73,22 +73,22 @@ const WeatherForecast = ({ city }) => {
   };
 
   // Get the button element
-  const moreInfoButton = document.getElementById('more-info-btn');
+  //const moreInfoButton = document.getElementById('more-info-btn');
 
   // Get all the pop-up elements
-  const popups = document.querySelectorAll('.popup');
+  //const popups = document.querySelectorAll('.popup');
 
   // Add event listener to the button
-  moreInfoButton.addEventListener('click', function() {
+  //moreInfoButton.addEventListener('click', function() {
     // Toggle visibility of pop-up elements
-    popups.forEach(function(popup) {
-      if (popup.style.opacity === '0') {
-        popup.style.opacity = '1';
-     } else {
-        popup.style.opacity = '0';
-      }
-    });
-  });
+    //popups.forEach(function(popup) {
+      //if (popup.style.opacity === '0') {
+        //popup.style.opacity = '1';
+     //} else {
+       // popup.style.opacity = '0';
+      //}
+    //});
+ // });
   
 
   return (
@@ -104,9 +104,10 @@ const WeatherForecast = ({ city }) => {
             <p className='pop'>Humidity : {forecast.main.humidity}%</p>
             <p className='pop'>Pressure : {forecast.main.pressure}</p>
             <p className='pop'>Wind Speed : {forecast.wind.speed}m/s</p>
+            <button id='more-info-btn'>More Info</button> 
           </div>
         ))}
-        <button id='more-info-btn'>More Info</button> 
+
     </div>
   );
 };
