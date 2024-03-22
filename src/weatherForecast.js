@@ -13,6 +13,8 @@ import defaultImage from './Assets/default.png'; // Default image (if weather co
 const WeatherForecast = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
 
+
+
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -70,22 +72,21 @@ const WeatherForecast = ({ city }) => {
     return days[dayOfWeek];
   };
 
-  
+  // Get the button element
+  const moreInfoButton = document.getElementById('more-info-btn');
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const moreInfoButton = document.getElementById('more-info-btn');
+  // Get all the pop-up elements
+  const popups = document.querySelectorAll('.popup');
 
-    const popups = document.querySelectorAll('.popup');
-  
-    moreInfoButton.addEventListener('click', function() {
-      popups.forEach(function(popup) {
-        // Toggle the visibility of pop-up elements
-        if (popup.style.opacity === '0') {
-          popup.style.opacity = '1'; // If the opacity is 0, set it to 1 (show)
-        } else {
-          popup.style.opacity = '0'; // Otherwise, set it to 0 (hide)
-        }
-      });
+  // Add event listener to the button
+  moreInfoButton.addEventListener('click', function() {
+    // Toggle visibility of pop-up elements
+    popups.forEach(function(popup) {
+      if (popup.style.opacity === '0') {
+        popup.style.opacity = '1';
+     } else {
+        popup.style.opacity = '0';
+      }
     });
   });
   
@@ -98,14 +99,14 @@ const WeatherForecast = ({ city }) => {
             <p className='stays'>{getDayOfWeek(forecast.dt_txt)}</p>
             <img src={getWeatherIcon(forecast.weather[0].main)} alt="Weather Icon" className="weather-icon" />
             <p className='stays'>Temp: {forecast.main.temp}°C</p>
-            <p className='popup'> Description: {forecast.weather[0].description}</p>
-            <p className='popup'>Feels like : {forecast.main.feels_like}°C</p>
-            <p className='popup'>Humidity : {forecast.main.humidity}%</p>
-            <p className='popup'>Pressure : {forecast.main.pressure}</p>
-            <p className='popup'>Wind Speed : {forecast.wind.speed}m/s</p>
-            <button id="more-info-btn">More Info</button> 
+            <p className='pop'> Description: {forecast.weather[0].description}</p>
+            <p className='pop'>Feels like : {forecast.main.feels_like}°C</p>
+            <p className='pop'>Humidity : {forecast.main.humidity}%</p>
+            <p className='pop'>Pressure : {forecast.main.pressure}</p>
+            <p className='pop'>Wind Speed : {forecast.wind.speed}m/s</p>
           </div>
         ))}
+        <button id='more-info-btn'>More Info</button> 
     </div>
   );
 };
