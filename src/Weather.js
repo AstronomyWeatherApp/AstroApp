@@ -22,7 +22,7 @@ const Weather = ({ onCityChange }) => {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=0eb6fccdfb4dc326cd05c87f99c91444`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=1ba5cef8465d89b81a184a3e2a1a0194`
       );
       const weatherResponse = response.data;
       setWeatherData(weatherResponse);
@@ -31,7 +31,7 @@ const Weather = ({ onCityChange }) => {
 
       // Fetch geo coordinates
       const geoResponse = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=0eb6fccdfb4dc326cd05c87f99c91444`
+        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=1ba5cef8465d89b81a184a3e2a1a0194`
       );
       const geoData = geoResponse.data[0];
       const latitude = geoData.lat;
@@ -77,7 +77,9 @@ const Weather = ({ onCityChange }) => {
   };
 
   return (
+    
     <div className='weather-container'>
+      <h1>Weather Forecast</h1>
       <form className='weather-form' onSubmit={handleSubmit}>
         <input
           className='weather-input'

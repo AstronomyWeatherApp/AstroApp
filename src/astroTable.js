@@ -17,6 +17,7 @@ import moonsetImage from './Assets/moonset.png';
 import PlanetTable from './planetTable';
 
 const Weather2 = ({ onCityChange }) => {
+  // State variables for managing data
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [latitude, setLatitude] = useState('');
@@ -26,12 +27,14 @@ const Weather2 = ({ onCityChange }) => {
   const [sunset, setSunset] = useState('');
   const [starGazingOptimal, setStarGazingOptimal] = useState('');
 
+  // Effect hook to fetch astronomy data when latitude and longitude change
   useEffect(() => {
     if (latitude && longitude) {
       fetchAstronomyData();
     }
   }, [latitude, longitude]);
 
+  // Effect hook to calculate star gazing conditions when moonData and sunrise change
   useEffect(() => {
     if (moonData && sunrise) {
       const moonriseTime = new Date(`2024-03-21 ${moonData.moonrise}`);
@@ -48,6 +51,7 @@ const Weather2 = ({ onCityChange }) => {
     }
   }, [moonData, sunrise]);
 
+  // Function to fetch astronomy data
   const fetchAstronomyData = async () => {
     try {
       const response = await axios.get('https://api.ipgeolocation.io/astronomy', {
@@ -67,18 +71,19 @@ const Weather2 = ({ onCityChange }) => {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=0eb6fccdfb4dc326cd05c87f99c91444`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=1ba5cef8465d89b81a184a3e2a1a0194`
       );
       const weatherResponse = response.data;
       setWeatherData(weatherResponse);
       onCityChange(city);
-
+//second api call to get geolocation to see which planet is the most visible as well as moon and sun 
       const geoResponse = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=0eb6fccdfb4dc326cd05c87f99c91444`
+        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=1ba5cef8465d89b81a184a3e2a1a0194`
       );
       const geoData = geoResponse.data[0];
       const latitude = geoData.lat;
@@ -91,10 +96,12 @@ const Weather2 = ({ onCityChange }) => {
     }
   };
 
+  // Function to handle input change in the form
   const handleInputChange = (e) => {
     setCity(e.target.value);
   };
 
+  // Function to get weather icon based on weather condition
   const getWeatherIcon = (weatherCondition, weatherDescription) => {
     switch (weatherCondition) {
       case 'Clear':
@@ -122,6 +129,7 @@ const Weather2 = ({ onCityChange }) => {
     }
   };
 
+  // Function to calculate star gazing duration
   const calculateStarGazingDuration = () => {
     const moonriseTime = new Date(`2024-03-21 ${moonData.moonrise}`);
     const sunriseTime = new Date(`2024-03-21 ${sunrise}`);
@@ -129,7 +137,7 @@ const Weather2 = ({ onCityChange }) => {
     return timeDifference.toFixed(2) + ' hours';
   };
   
-
+  // Rendering JSX
   return (
     <div className='weather-container'>
       <form className='weather-form' onSubmit={handleSubmit}>
@@ -145,7 +153,7 @@ const Weather2 = ({ onCityChange }) => {
       {weatherData && (
         <div className='weather-box-container'>
           <div className='weather-info'>
-            <h2>Today</h2>
+            <h2>Today</h2>                              
             <img
               className='weather-image'
               src={getWeatherIcon(weatherData.weather[0].main)}
@@ -165,13 +173,12 @@ const Weather2 = ({ onCityChange }) => {
         </div>
       )}
 
-{starGazingOptimal && (
-  <div className="star-gazing-info">
-    Star Gazing: {starGazingOptimal}
-    <div className="star-gazing-duration">Duration: {calculateStarGazingDuration()}</div>
-  </div>
-)}
-
+      {starGazingOptimal && (
+        <div className="star-gazing-info">
+          Star Gazing: {starGazingOptimal}
+          <div className="star-gazing-duration">Duration: {calculateStarGazingDuration()}</div>
+        </div>
+      )}
 
       {latitude && longitude && <PlanetTable latitude={latitude} longitude={longitude} />}
     </div>
@@ -179,3 +186,4 @@ const Weather2 = ({ onCityChange }) => {
 };
 
 export default Weather2;
+

@@ -1,6 +1,3 @@
-/* Weather2.css */
-/* Weather2.css */
-
 .weather-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 2% auto;
@@ -70,6 +67,7 @@
   .weather-info img {
     display: block;
     margin: 0 auto;
+    width: 200px;
   }
   
   .weather-image {
@@ -82,7 +80,6 @@
     margin: 0 auto;
   }
 
-  /* Weather2.css */
 
 
   .mostVisible {
@@ -93,16 +90,8 @@
     color: #fff; /* Example color */
   }
   
-  /* Weather2.css */
 
-/* Moon data styling */
-/* Weather2.css */
 
-/* Moon data styling */
-/* Weather2.css */
-
-/* Moon data styling */
-/* Weather2.css */
 
 /* Moon data styling */
 .moon-data {

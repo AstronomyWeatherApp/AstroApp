@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './plantTable.css';
+import './planetTable.css';
 
 // Import planet images
 import mercuryImage from './images/mercury.png';
