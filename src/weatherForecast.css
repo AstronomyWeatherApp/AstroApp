@@ -25,3 +25,31 @@
     width: 60px; /* Adjust the width of the weather icon */
     height: 50px; /* Adjust the height of the weather icon */
 }
+
+@media screen and (min-width: 390px){
+    .weather-container-2{
+        margin-left: 0;
+        padding-right: 225px;
+    }
+    .weather-box {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding-right: 50px;
+    }
+      
+    .weather-box img {
+        width: 200px;
+        height: 150px; /* Adjust the width of the image */
+        margin-right: 20px; /* Add spacing between the image and paragraphs */
+    }
+
+    .stays {
+        font-size: 2em;
+    }
+
+    .popup {
+        opacity: 0; /* Initially hide pop-up elements */
+        transition: opacity 0.3s ease; /* Add transition for smooth visibility change */
+    }
+}

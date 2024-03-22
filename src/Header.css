@@ -88,3 +88,37 @@
   color: rgb(121, 121, 121);
 }
 
+@media screen and (min-width: 390px){
+  .header {
+    background-color: black;
+    border-color: black;
+    width: 100%;
+  }
+  .hamburger-menu {
+    width: 40px; /* Set the width of the hamburger menu */
+    height: 75px; /* Set the height of the hamburger menu */
+    cursor: pointer;
+  }
+  .bar {
+    width: 60px; /* Set the width of each bar */
+    height: 6px; /* Set the height of each bar */
+    margin: 13px 0; /* Adjust the spacing between bars */
+  }
+  .open .bar:first-child {
+    transform: translate(-10%, 300%) rotate(45deg); /* Rotate first bar for 'X' shape */
+  }
+  .open .bar:last-child {
+    transform: translate(-10%, -300%) rotate(-45deg); /* Rotate last bar for 'X' shape */
+  }
+  .header-right ul {
+    width: 100%;
+  }
+  .header-right ul li a {
+    display: block;
+    font-size: 50px;
+    margin-right: 100px;
+    transform: translate(-100%);
+  }
+  
+}
+

@@ -70,19 +70,40 @@ const WeatherForecast = ({ city }) => {
     return days[dayOfWeek];
   };
 
+  
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const moreInfoButton = document.getElementById('more-info-btn');
+
+    const popups = document.querySelectorAll('.popup');
+  
+    moreInfoButton.addEventListener('click', function() {
+      popups.forEach(function(popup) {
+        // Toggle the visibility of pop-up elements
+        if (popup.style.opacity === '0') {
+          popup.style.opacity = '1'; // If the opacity is 0, set it to 1 (show)
+        } else {
+          popup.style.opacity = '0'; // Otherwise, set it to 0 (hide)
+        }
+      });
+    });
+  });
+  
+
   return (
     <div className='weather-container-2'>
       {weatherData &&
         filterForecastFor12PM(weatherData.list).map((forecast, index) => (
           <div className='weather-box' key={index}>
-            <p>Day: {getDayOfWeek(forecast.dt_txt)}</p>
+            <p className='stays'>{getDayOfWeek(forecast.dt_txt)}</p>
             <img src={getWeatherIcon(forecast.weather[0].main)} alt="Weather Icon" className="weather-icon" />
-            <p>Temperature: {forecast.main.temp}°C</p>
-            <p>Description: {forecast.weather[0].description}</p>
-            <p>Feels like : {forecast.main.feels_like}°C</p>
-            <p>Humidity : {forecast.main.humidity}%</p>
-            <p>Pressure : {forecast.main.pressure}</p>
-            <p>Wind Speed : {forecast.wind.speed}m/s</p>
+            <p className='stays'>Temp: {forecast.main.temp}°C</p>
+            <p className='popup'> Description: {forecast.weather[0].description}</p>
+            <p className='popup'>Feels like : {forecast.main.feels_like}°C</p>
+            <p className='popup'>Humidity : {forecast.main.humidity}%</p>
+            <p className='popup'>Pressure : {forecast.main.pressure}</p>
+            <p className='popup'>Wind Speed : {forecast.wind.speed}m/s</p>
+            <button id="more-info-btn">More Info</button> 
           </div>
         ))}
     </div>

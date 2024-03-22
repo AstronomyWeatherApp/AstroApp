@@ -97,7 +97,7 @@ const Weather = ({ onCityChange }) => {
               src={getWeatherIcon(weatherData.weather[0].main)}
               alt="Weather Icon"
             />
-            <p> <h1><b>{weatherData.name}</b></h1> {weatherData.main.temp}°C</p>
+            <p><h1><b>{weatherData.name}</b></h1>{weatherData.main.temp}°C</p>
           </div>
         </div>
       )}
