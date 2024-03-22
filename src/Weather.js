@@ -101,7 +101,7 @@ const Weather = ({ onCityChange }) => {
             />
             <p><h1><b>{weatherData.name}</b></h1> {weatherData.main.temp}°C</p>
             {city && (
-              <button className='info-btn'><Link to="/AstroData">Find Out More About Today</Link></button>
+             <Link to="/AstroData"> <button className='info-btn'>Find Out More About Today</button></Link>
 
             )}
           </div>
