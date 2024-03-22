@@ -144,7 +144,7 @@ const Weather2 = ({ onCityChange }) => {
         <input
           className='weather-input'
           type="text"
-          placeholder="Search Location..."
+          placeholder="Enter a Location..."
           value={city}
           onChange={handleInputChange}
         />

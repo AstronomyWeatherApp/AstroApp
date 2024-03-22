@@ -23,7 +23,7 @@ const YourComponent = () => {
 
   return (
     <div>
-      {/* Your component JSX */}
+     
     </div>
   );
 };

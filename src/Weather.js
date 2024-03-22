@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import axios from 'axios';
 import './Weather.css'; // Import the CSS file
 import sunnyImage from './Assets/sunny.png'; // Image for Clear sky
@@ -11,7 +12,7 @@ import mistImage from './Assets/mist.png'; // Image for Mist
 import showerRainImage from './Assets/shower_rain.png'; // Image for Shower Rain
 import defaultImage from './Assets/default.png'; // Default image (if weather condition is not matched)
 import PlanetTable from './planetTable'; // Import the PlanetTable component
-
+//weather function sets teh state of the city and weather data for latitude and longitude so it can be passed for 5 day forecast
 const Weather = ({ onCityChange }) => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
@@ -48,11 +49,11 @@ const Weather = ({ onCityChange }) => {
   const handleInputChange = (e) => {
     setCity(e.target.value);
   };
-
+//gets the weather icon from the images in assets to match for the weather
   const getWeatherIcon = (weatherCondition, weatherDescription) => {
     switch (weatherCondition) {
       case 'Clear':
-        return defaultImage;
+        return sunnyImage;
       case 'Clouds':
         return cloudyImage;
       case 'Rain':
@@ -69,15 +70,14 @@ const Weather = ({ onCityChange }) => {
         return mistImage;
       case 'Shower Rain':
         return showerRainImage;
-      case 'Sunny':
-        return sunnyImage;
       default:
         return defaultImage;
     }
   };
 
+ 
+// returns the outputs to display on the page
   return (
-    
     <div className='weather-container'>
       <h1>Weather Forecast</h1>
       <form className='weather-form' onSubmit={handleSubmit}>
@@ -96,15 +96,17 @@ const Weather = ({ onCityChange }) => {
             <h2>Today</h2>
             <img
               className='weather-image'
-              src={getWeatherIcon(weatherData.weather[0].main)}
+              src={getWeatherIcon(weatherData.weather[0].main, weatherData.weather[0].description)}
               alt="Weather Icon"
             />
-            <p> <h1><b>{weatherData.name}</b></h1> {weatherData.main.temp}°C</p>
+            <p><h1><b>{weatherData.name}</b></h1> {weatherData.main.temp}°C</p>
+            {city && (
+              <button className='info-btn'><Link to="/AstroData">Find Out More About Today</Link></button>
+
+            )}
           </div>
         </div>
       )}
-
-      
     </div>
   );
 };

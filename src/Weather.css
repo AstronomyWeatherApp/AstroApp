@@ -81,3 +81,28 @@
   width: 100px;
   margin: 0 auto;
 }
+
+/* Weather.css */
+
+.info-btn {
+  background-color: #43494f; /* Blue color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  cursor: pointer; /* Cursor style */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  margin-top: 30px;
+}
+
+.info-btn:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Apply style to Link component */
+.info-btn > a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+}
+
+

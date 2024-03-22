@@ -6,24 +6,27 @@
     margin: 2% auto;
     display: grid; /* Use CSS grid */
     grid-template-columns: 1fr; /* Single column layout */
-    grid-gap: 10px; /* Gap between grid items */
+    grid-gap: 20px; /* Increased gap between grid items */
     background-color: rgba(0, 0, 0, 0.25);
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 30px; /* Increased padding */
+    border-radius: 20px; /* Increased border radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adjusted box shadow */
     color: white;
 }
-  
+
 .weather-box {
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.25);
-    border-radius: 10px; /* Rounded corners for the text box */
+    padding: 20px; /* Increased padding */
+    background-color: rgba(0, 0, 0, 0.25); /* Adjusted background color */
+    border-radius: 20px; /* Rounded corners for the text box */
     color: white;
     font-family: 'Arial', sans-serif; /* Change font family */
     font-weight: bold; /* Make the text thicker */
+    font-size: 18px; /* Increased font size */
+    line-height: 1.5; /* Adjusted line height */
 }
 
 .weather-box img {
-    width: 60px; /* Adjust the width of the weather icon */
-    height: 50px; /* Adjust the height of the weather icon */
+    width: 80px; /* Adjusted width of the weather icon */
+    height: 70px; /* Adjusted height of the weather icon */
+    margin-right: 10px; /* Added margin to the right of the weather icon */
 }
