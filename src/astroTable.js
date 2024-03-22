@@ -15,6 +15,7 @@ import sunsetImage from './Assets/sunset.png';
 import moonriseImage from './Assets/moonrise.png';
 import moonsetImage from './Assets/moonset.png';
 import PlanetTable from './planetTable';
+import AstronomyModule from './astronomyModule';
 
 const Weather2 = ({ onCityChange }) => {
   // State variables for managing data
@@ -180,7 +181,7 @@ const Weather2 = ({ onCityChange }) => {
         </div>
       )}
 
-      {latitude && longitude && <PlanetTable latitude={latitude} longitude={longitude} />}
+      {latitude && longitude && <AstronomyModule lat={latitude} lon={longitude} />}
     </div>
   );
 };

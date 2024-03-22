@@ -1,11 +1,13 @@
-1) first install necessary node modules with : npm install
+1) CD into Astro App directory via the terminal
 
-2) after install dependancies
+2) install necessary node modules with : npm install
+
+3) after install dependancies
  dependancies used  and how to install them :
 axios : npm install axios
 react router :  npm install react-router-dom
 
-3) after all this tpye npm start and run the code.
+4) after all this tpye npm start and run the code.
 
 
 
